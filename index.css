@@ -5,18 +5,50 @@ html, body, p{
 
 *{
     font-weight: normal;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Diatype;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+@font-face {
+  font-family: Cartograph;
+  src: url(fonts/CartographMonoCF-Bold.otf);
+}
+
+@font-face {
+  font-family: Diatype;
+  src: url(fonts/abc-diatype-semi-mono-regular.otf);
+}
+
 h1,
-h2{
+h2,
+h3{
     text-transform: uppercase;
 }
 
+p, h3, h4, li{
+    font-size: 15pt;
+    margin: 20px 0;
+    list-style-type: none;
+}
+
+ul ul{
+    margin-left: 20px;
+}
+
+img{
+    width: 100%;
+}
+
 header h1{
+    font-family: Cartograph;
     width: 100%;
     font-size: 144pt;
     line-height: 1;
@@ -27,6 +59,7 @@ header h1{
     transform: translate(-50%,-50%);
     z-index: 0;
     filter: blur(15px);
+    opacity: 0.8;
 }
 
 header video{
@@ -37,12 +70,6 @@ header video{
     transform: translate(-50%,-50%);
     z-index: -1;
     mix-blend-mode: multiply;
-}
-
-body{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
 }
 
 section {
@@ -80,6 +107,74 @@ section:nth-of-type(4) > div{
     transform: rotate(-3deg);
 }
 
+.curriculum summary,
+.participants summary,
+.schedule summary,
+h2{
+    font-size: 30pt;
+    filter: drop-shadow(0 0 2px #9164ff);
+    /* -webkit-text-stroke: 0.5px #9164ff; */
+}
+
+.curriculum summary,
+.participants summary,
+.schedule summary{
+    margin-top: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.curriculum details[open] summary,
+.participants details[open] summary,
+.schedule details[open] summary{
+    margin-bottom: 20px;
+}
+
+.curriculum summary::marker,
+.participants summary::marker,
+.schedule summary::marker{
+    content: '';
+}
+
+.curriculum details[open] summary::marker,
+.participants details[open] summary::marker,
+.schedule details[open] summary::marker{
+    content: '↯';
+}
+
+.curriculum summary:hover,
+.participants summary:hover,
+.schedule summary:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.curriculum figcaption,
+.participants figcaption{
+    text-transform: uppercase;
+    font-size: 10pt;
+}
+
+.curriculum img.portrait{
+    width: 50%;
+    display: block;
+}
+
+.curriculum figcaption{
+    margin-top: 10px;
+}
+
+.participants details>figure{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+}
+
+.participants details>figure figure{
+    width: calc(100% / 4 - 15px);
+}
+
 footer{
     position: relative;
     overflow: hidden;
@@ -98,10 +193,16 @@ footer video{
 
 footer img{
     width: 15%;
-    padding: 40px;
     mix-blend-mode: multiply;
     position: absolute;
-    bottom: 0;
+    bottom: 40px;
+    left: 40px;
+}
+
+footer div{
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
 }
 
 /*
@@ -119,11 +220,45 @@ mobile view
     height: 100%;
     width: auto;
 }
+    
+    footer img{
+    width: 25%;
+    mix-blend-mode: multiply;
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+footer div{
+    position: absolute;
+    bottom: 40px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
     header h1{
         font-size: 56pt;
         filter: blur(6px);
     }
+
+    .participants details>figure figure{
+    width: calc(100% / 3 - 15px);
+}
+
+
+.curriculum summary,
+.participants summary,
+.schedule summary,
+h2{
+    font-size: 24pt;
+}
+
+p, h3, h4, li{
+    font-size: 12pt;
+}
+
 }
 
 /*
@@ -151,4 +286,38 @@ tablet view
         height: 100%;
         width: auto;
     }
+    
+    footer img{
+    width: 25%;
+    mix-blend-mode: multiply;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+footer div{
+    position: absolute;
+    /* width: 100%; */
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    line-height: 1.2;
+}
+
+    .participants details>figure figure{
+    width: calc(100% / 3 - 15px);
+}
+.curriculum summary,
+.participants summary,
+.schedule summary,
+h2{
+    font-size: 24pt;
+}
+
+p, h3, h4, li{
+    font-size: 12pt;
+}
+
 }
